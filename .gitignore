@@ -16,43 +16,5 @@ build/
 # *.freezed.dart
 # *.g.dart
 
-# Android
-.gradle/
-local.properties
-**/android/app/src/main/res/raw/google_services.json
-*.jks
-*.keystore
-*.apk
-*.aab
-
-# iOS
-**/ios/Flutter/Generated.xcconfig
-**/ios/Flutter/app.flx
-**/ios/Flutter/app.zip
-**/ios/Flutter/flutter_assets/
-**/ios/Flutter/flutter_export_environment.sh
-**/ios/ServiceDefinitions.json
-**/ios/Runner/GeneratedPluginRegistrant.*
-**/ios/Pods/
-**/ios/.symlinks/
-**/ios/Flash/Generated.xcconfig
-**/ios/.generated/
-DerivedData/
-*.pbxuser
-*.mode1v3
-*.mode2v3
-*.perspectivev3
-xcuserdata/
-
-# Web
-.mjs/
-.js/
-
-# Desktop (macOS, Windows, Linux)
-**/macos/Flutter/ephemeral/
-**/windows/flutter/ephemeral/
-**/linux/flutter/ephemeral/
-Executable/
-
 # Secrets e Variáveis de Ambiente (MUITO IMPORTANTE)
 .env*
