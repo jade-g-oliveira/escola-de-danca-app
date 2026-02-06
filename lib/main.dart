@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'app_splash_screen.dart';
 import 'home_page.dart';
+import 'shared/app_colors.dart';
 
 void main() {
   // 1. Garante a inicialização das bindings
@@ -43,11 +44,13 @@ class _MyAppState extends State<MyApp> {
       title: 'Escola de Dança',
   theme: ThemeData(
     useMaterial3: true,
-    // Define a cor principal e gera tons complementares
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: const Color(0xFF2B12F9),
-      primary: const Color(0xFF2B12F9),
-    ),
+colorScheme: ColorScheme.fromSeed(
+    seedColor: AppColors.primary,
+    primary: AppColors.primary,
+    surface: AppColors.background,
+    error: AppColors.error,
+  ),
+  scaffoldBackgroundColor: AppColors.background,
     
     // Customizando o estilo dos campos de texto
     inputDecorationTheme: InputDecorationTheme(
@@ -55,17 +58,17 @@ class _MyAppState extends State<MyApp> {
         borderRadius: BorderRadius.circular(16),
       ),
       focusedBorder: OutlineInputBorder(
-        borderSide: const BorderSide(color: Color(0xFF2B12F9), width: 2),
-        borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: AppColors.primary, width: 2),
+        borderRadius: BorderRadius.circular(16),
       ),
     ),
 
     // Estilo global dos botões
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: const Color(0xFF2B12F9),
-        foregroundColor: Colors.white,
-        minimumSize: const Size(double.infinity, 50),
+        backgroundColor: AppColors.primary,
+        foregroundColor: AppColors.background,
+        minimumSize: const Size(double.infinity, 40),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
