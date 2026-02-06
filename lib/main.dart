@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'app_splash_screen.dart';
+import 'home_page.dart';
 
 void main() {
   // 1. Garante a inicialização das bindings
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  
-  // 2. Aqui você pode manter a splash nativa visível 
-  // (No iOS nativo, o LaunchScreen fica até o primeiro frame ser renderizado)
+  WidgetsFlutterBinding.ensureInitialized();
   
   runApp(const MyApp());
 }
@@ -29,7 +27,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> _initializeApp() async {
-    // Simula o carregamento dos seus Mocks ou Firebase
+    // Simula o carregamento do Firebase
     await Future.delayed(const Duration(seconds: 2)); 
     
     if (mounted) {
@@ -42,53 +40,40 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: _isLoading ? const AppSplashScreen() : const MyHomePage(title: '',),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({required this.title, super.key});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+      title: 'Escola de Dança',
+  theme: ThemeData(
+    useMaterial3: true,
+    // Define a cor principal e gera tons complementares
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: const Color(0xFF2B12F9),
+      primary: const Color(0xFF2B12F9),
+    ),
+    
+    // Customizando o estilo dos campos de texto
+    inputDecorationTheme: InputDecorationTheme(
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: .center,
-          children: [
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+      focusedBorder: OutlineInputBorder(
+        borderSide: const BorderSide(color: Color(0xFF2B12F9), width: 2),
+        borderRadius: BorderRadius.circular(12),
+      ),
+    ),
+
+    // Estilo global dos botões
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: const Color(0xFF2B12F9),
+        foregroundColor: Colors.white,
+        minimumSize: const Size(double.infinity, 50),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+    ),
+  ),
+      home: _isLoading ? const AppSplashScreen() : const HomePage(title: '',),
     );
   }
 }
+
