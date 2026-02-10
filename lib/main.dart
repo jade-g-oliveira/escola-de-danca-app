@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'core/network/api_client.dart';
 import 'core/routes/app_router.dart';
 import 'core/theme/app_colors.dart';
 import 'features/dance_classes/data/datasource/dance_class_remote_datasource.dart';
@@ -11,20 +12,17 @@ import 'features/dance_classes/presentation/providers/dance_class_provider.dart'
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  final dio = Dio(BaseOptions(
-    baseUrl: 'https://jsonplaceholder.typicode.com',
-    connectTimeout: const Duration(seconds: 5),
-    headers: {
-    'User-Agent': 'PostmanRuntime/7.32.3', //para evitar o 403
-    'Accept': '*/*',
-  },
-  ));
 
   runApp(
     MultiProvider(
       providers: [
+        Provider<Dio>(
+          create: (_) => ApiClient.instance,
+        ),
         Provider<DanceClassRemoteDataSource>(
-          create: (_) => DanceClassRemoteDataSourceImpl(dio),
+            create: (context) => DanceClassRemoteDataSourceImpl(
+            context.read<Dio>(),
+          ),
         ),
 
         Provider<DanceClassRepository>(
