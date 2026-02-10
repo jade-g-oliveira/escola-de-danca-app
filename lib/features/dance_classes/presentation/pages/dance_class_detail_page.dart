@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../../../shared/app_colors.dart';
+import '../../../../core/theme/app_colors.dart';
 
 class DanceClassDetailPage extends StatelessWidget {
-  final String ritmo;
+  final String rhythm;
 
-  const DanceClassDetailPage({required this.ritmo, super.key});
+  const DanceClassDetailPage({required this.rhythm, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class DanceClassDetailPage extends StatelessWidget {
                 children: [
                   // Nome Dinâmico vindo da API
                   Text(
-                    ritmo.toUpperCase(),
+                    rhythm.toUpperCase(),
                     style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 16),
@@ -62,7 +62,7 @@ class DanceClassDetailPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    "Uma aula envolvente de $ritmo focada na expressão corporal e ritmo. "
+                    "Uma aula envolvente de $rhythm focada na expressão corporal e ritmo. "
                     "Perfeito para quem quer começar do zero e se divertir!",
                     style: TextStyle(color: Colors.blueGrey[600], height: 1.5),
                   ),

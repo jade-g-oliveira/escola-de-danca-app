@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/routes/app_routes.dart';
-import '../../../shared/app_colors.dart';
+import '../../../core/theme/app_colors.dart';
 import '../../dance_classes/presentation/providers/dance_class_provider.dart';
 import '../../dance_classes/presentation/widgets/dance_class_card.dart';
 import '../../dance_classes/presentation/widgets/header_section.dart';

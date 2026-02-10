@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'core/routes/app_router.dart';
+import 'core/theme/app_colors.dart';
+import 'features/dance_classes/data/datasource/dance_class_remote_datasource.dart';
 import 'features/dance_classes/data/repository/dance_class_repository_impl.dart';
 import 'features/dance_classes/domain/repositories/dance_class_repository.dart';
 import 'features/dance_classes/presentation/providers/dance_class_provider.dart';
-import 'shared/app_colors.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,8 +23,14 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
+        Provider<DanceClassRemoteDataSource>(
+          create: (_) => DanceClassRemoteDataSourceImpl(dio),
+        ),
+
         Provider<DanceClassRepository>(
-          create: (_) => DanceClassRepositoryImpl(dio),
+          create: (context) => DanceClassRepositoryImpl(
+          context.read<DanceClassRemoteDataSource>(),
+          ),
         ),
 
         ChangeNotifierProvider(
