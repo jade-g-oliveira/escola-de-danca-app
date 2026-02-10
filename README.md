@@ -1,4 +1,5 @@
 Escola de Dança App
+
 Este é um projeto mobile desenvolvido em Flutter para a gestão e visualização de aulas de dança. O aplicativo foi construído com foco em escalabilidade, testabilidade e seguindo os padrões de mercado.
 
 🚀 Funcionalidades
