@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
+import '../../../core/routes/app_routes.dart';
 import '../../../shared/app_colors.dart';
 import '../../dance_classes/presentation/providers/dance_class_provider.dart';
 import '../../dance_classes/presentation/widgets/dance_class_card.dart';
@@ -34,14 +36,15 @@ class HomeContent extends StatelessWidget {
                       return const Center(child: CircularProgressIndicator(color: AppColors.primary));
                     }
 
-                    final lista = provider.danceClasses.take(5).toList();
+                    final danceClasses = provider.danceClasses.take(5).toList();
 
                     return ListView.builder(
-                      itemCount: lista.length,
+                      itemCount: danceClasses.length,
                       itemBuilder: (context, index) {
+                        final danceClass = danceClasses[index];
                         return DanceClassCard(
-                          ritmo: lista[index].ritmo,
-                          onTap: () => print("Aula de ${lista[index].ritmo}"),
+                          ritmo: danceClasses[index].rhythm,
+                          onTap: () => context.push(AppRoutes.danceClassDetaill, extra: danceClass.rhythm),
                         );
                       },
                     );

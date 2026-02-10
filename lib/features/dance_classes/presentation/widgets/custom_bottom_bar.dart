@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../shared/app_colors.dart';
+
 class CustomBottomBar extends StatelessWidget {
   final int currentIndex;
   final ValueChanged<int> onTap;
@@ -11,8 +13,8 @@ class CustomBottomBar extends StatelessWidget {
         currentIndex: currentIndex,
         onTap: onTap,
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: const Color(0xFF4A49E8),
-        unselectedItemColor: Colors.blueGrey.withValues(alpha: 0.6),
+        selectedItemColor: AppColors.primary,
+        unselectedItemColor: AppColors.textSecondary.withValues(alpha: 0.6),
         showUnselectedLabels: true,
         selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
         unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),

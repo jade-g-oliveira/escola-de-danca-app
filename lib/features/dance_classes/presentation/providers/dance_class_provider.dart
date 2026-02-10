@@ -14,7 +14,7 @@ class DanceClassProvider extends ChangeNotifier {
 
   DanceClassProvider(this.repository);
 
-  Future<void> fetchAulas() async {
+  Future<void> loadDanceClasses() async {
     _loading = true;
     try {
       _danceClasses = await repository.getDanceClasses();

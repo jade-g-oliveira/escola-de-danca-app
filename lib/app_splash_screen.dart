@@ -16,7 +16,7 @@ class AppSplashScreen extends StatefulWidget {
 class _AppSplashScreenState extends State<AppSplashScreen> {
   Future<void> _initializeApp() async {
   try {
-    await context.read<DanceClassProvider>().fetchAulas();
+    await context.read<DanceClassProvider>().loadDanceClasses();
     await Future.delayed(const Duration(seconds: 1));
   } catch (e) {
     //Envio de erros de conexão para craschlitycs

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../core/routes/app_routes.dart';
 import '../../../../shared/app_colors.dart';
 import '../providers/dance_class_provider.dart';
 import '../widgets/dance_class_card.dart';
@@ -9,7 +11,7 @@ class DanceClassesPage extends StatelessWidget {
   const DanceClassesPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {    
     return Padding(
       padding: const EdgeInsets.all(24.0),
       child: Column(
@@ -27,14 +29,15 @@ class DanceClassesPage extends StatelessWidget {
                   return const Center(child: CircularProgressIndicator(color: AppColors.primary));
                 }
                 
-                final todasAulas = provider.danceClasses;
+                final allClasses = provider.danceClasses;
 
                 return ListView.builder(
-                  itemCount: todasAulas.length,
+                  itemCount: allClasses.length,
                   itemBuilder: (context, index) {
+                    final danceClass = allClasses[index];
                     return DanceClassCard(
-                      ritmo: todasAulas[index].ritmo,
-                      onTap: () => print("Detalhes de ${todasAulas[index].ritmo}"),
+                      ritmo: allClasses[index].rhythm,
+                      onTap: () => context.push(AppRoutes.danceClassDetaill, extra: danceClass.rhythm),
                     );
                   },
                 );
