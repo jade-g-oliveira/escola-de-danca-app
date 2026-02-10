@@ -45,6 +45,6 @@ void main() {
 
     // Assert: Agora o widget deve estar na árvore
     expect(find.text("Nenhum ritmo encontrado"), findsOneWidget);
-    expect(find.byIcon(Icons.skateboarding), findsOneWidget);
+    expect(find.byIcon(Icons.music_note_outlined), findsOneWidget);
   });
 }
