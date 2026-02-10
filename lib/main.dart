@@ -2,12 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-// Importe suas camadas de Clean Arch aqui
-import 'app_splash_screen.dart';
+import 'core/routes/app_router.dart';
 import 'features/dance_classes/data/repository/dance_class_repository_impl.dart';
 import 'features/dance_classes/domain/repositories/dance_class_repository.dart';
 import 'features/dance_classes/presentation/providers/dance_class_provider.dart';
-import 'features/home/home_page.dart';
 import 'shared/app_colors.dart';
 
 void main() {
@@ -47,35 +45,10 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool _isLoading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _initializeApp();
-  }
-
-Future<void> _initializeApp() async {
-  try {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-    context.read<DanceClassProvider>().fetchAulas();
-  });
-  } catch (e) {
-    //Envio de erros de conexão para craschlitycs
-    debugPrint("Erro ao pré-carregar dados: $e");
-  } finally {
-    if (mounted) {
-      setState(() {
-        _isLoading = false; //Só libera a Home aqui
-      });
-    }
-  }
-}
-
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: AppRouter().appRouter,
       debugShowCheckedModeBanner: false,
       title: 'Escola de Dança',
       theme: ThemeData(
@@ -98,7 +71,6 @@ Future<void> _initializeApp() async {
           ),
         ),
       ),
-      home: _isLoading ? const AppSplashScreen() : const HomeScreen(),
     );
   }
 }

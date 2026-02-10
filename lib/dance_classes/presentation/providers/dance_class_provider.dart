@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/entities/dance_class_entity.dart';
-import '../../domain/repositories/dance_class_repository.dart';
+import '../../../features/dance_classes/domain/entities/dance_class_entity.dart';
+import '../../../features/dance_classes/domain/repositories/dance_class_repository.dart';
 
 class DanceClassProvider extends ChangeNotifier {
   final DanceClassRepository repository;
@@ -16,6 +16,7 @@ class DanceClassProvider extends ChangeNotifier {
 
   Future<void> fetchAulas() async {
     _loading = true;
+    notifyListeners();
     try {
       _danceClasses = await repository.getDanceClasses();
     } finally {

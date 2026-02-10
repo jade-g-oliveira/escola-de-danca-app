@@ -5,14 +5,14 @@ import '../dance_classes/presentation/providers/dance_class_provider.dart';
 import '../dance_classes/presentation/widgets/custom_bottom_bar.dart';
 import 'widgets/home_content.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomePage> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomePage> {
   int _currentIndex = 0;
   late final List<Widget> _screens;
 

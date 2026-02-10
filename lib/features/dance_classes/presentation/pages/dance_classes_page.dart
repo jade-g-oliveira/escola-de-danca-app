@@ -43,6 +43,6 @@ class DanceClassesPage extends StatelessWidget {
           ),
         ],
       ),
-    );;
+    );
   }
 }

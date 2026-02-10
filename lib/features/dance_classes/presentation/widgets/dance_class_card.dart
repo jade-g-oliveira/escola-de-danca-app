@@ -7,9 +7,9 @@ class DanceClassCard extends StatelessWidget {
   final VoidCallback onTap;
 
   const DanceClassCard({
-    super.key,
     required this.ritmo,
     required this.onTap,
+    super.key
   });
 
   @override
