@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../core/routes/app_routes.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../home/widgets/empty_state_widget.dart';
 import '../providers/dance_class_provider.dart';
 import '../widgets/dance_class_card.dart';
 
@@ -27,6 +28,12 @@ class DanceClassesPage extends StatelessWidget {
               builder: (context, provider, _) {
                 if (provider.loading) {
                   return const Center(child: CircularProgressIndicator(color: AppColors.primary));
+                }
+
+                if (provider.danceClasses.isEmpty) {
+                  return EmptyStateWidget(
+                    onRetry: () => provider.loadDanceClasses(),
+                  );
                 }
                 
                 final allClasses = provider.danceClasses;

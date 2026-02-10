@@ -24,7 +24,7 @@ class EmptyStateWidget extends StatelessWidget {
             const Text(
               "Não conseguimos carregar as aulas agora.",
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.grey),
+              style: TextStyle(color: AppColors.textSecondary),
             ),
             TextButton(
               onPressed: onRetry,

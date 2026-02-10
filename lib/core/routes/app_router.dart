@@ -7,24 +7,24 @@ import 'app_routes.dart';
 
 class AppRouter {
   final appRouter = GoRouter(
-  initialLocation: AppRoutes.splashScreen,
-  routes: [
-    GoRoute(
-      path: AppRoutes.splashScreen,
-      builder: (context, state) => const AppSplashScreen(),
-    ),
-    GoRoute(
-      path: AppRoutes.home,
-      builder: (context, state) => const HomePage(),
-    ),
-    GoRoute(
-      path: AppRoutes.danceClassDetaill,
-      builder: (context, state) {
-        final rhythm = (state.extra as String?) ?? 'Ritmo não encontrado';
-        return DanceClassDetailPage(rhythm: rhythm);
-      },
-    ),
-  ],
-);
+    initialLocation: AppRoutes.splashScreen,
+    routes: [
+      GoRoute(
+        path: AppRoutes.splashScreen,
+        builder: (context, state) => const AppSplashScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.home,
+        builder: (context, state) => const HomePage(),
+      ),
+      GoRoute(
+        path: AppRoutes.danceClassDetaill,
+        builder: (context, state) {
+          final rhythm = (state.extra as String?) ?? 'Ritmo não encontrado';
+          return DanceClassDetailPage(rhythm: rhythm);
+        },
+      ),
+    ],
+  );
 }
 
