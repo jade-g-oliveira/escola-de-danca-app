@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import 'core/constants/app_assets.dart';
-import 'core/routes/app_routes.dart';
-import 'features/dance_classes/presentation/providers/dance_class_provider.dart';
+import '../features/dance_classes/presentation/providers/dance_class_provider.dart';
+import 'constants/app_assets.dart';
+import 'routes/app_routes.dart';
 
 class AppSplashScreen extends StatefulWidget {
   const AppSplashScreen({super.key});

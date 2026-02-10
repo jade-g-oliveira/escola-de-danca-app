@@ -8,6 +8,7 @@ import '../../dance_classes/presentation/providers/dance_class_provider.dart';
 import '../../dance_classes/presentation/widgets/dance_class_card.dart';
 import '../../dance_classes/presentation/widgets/header_section.dart';
 import '../../dance_classes/presentation/widgets/search_bar_widget.dart';
+import 'empty_state_widget.dart';
 
 class HomeContent extends StatelessWidget {
   const HomeContent({super.key});
@@ -32,8 +33,13 @@ class HomeContent extends StatelessWidget {
               Expanded(
                 child: Consumer<DanceClassProvider>(
                   builder: (context, provider, _) {
-                    if (provider.loading && provider.danceClasses.isEmpty) {
+                    if (provider.loading) {
                       return const Center(child: CircularProgressIndicator(color: AppColors.primary));
+                    }
+                    if (provider.danceClasses.isEmpty) {
+                      return EmptyStateWidget(
+                        onRetry: () => provider.loadDanceClasses(),
+                      );
                     }
 
                     final danceClasses = provider.danceClasses.take(5).toList();

@@ -12,12 +12,19 @@ class DanceClassProvider extends ChangeNotifier {
   bool _loading = false;
   bool get loading => _loading;
 
+  String? _errorMessage;
+  String? get errorMessage => _errorMessage;
+
   DanceClassProvider(this.repository);
 
   Future<void> loadDanceClasses() async {
-    _loading = true;
+_loading = true;
+    _errorMessage = null;
+
     try {
       _danceClasses = await repository.getDanceClasses();
+    } catch (e) {
+      _errorMessage = e.toString();
     } finally {
       _loading = false;
       notifyListeners();
