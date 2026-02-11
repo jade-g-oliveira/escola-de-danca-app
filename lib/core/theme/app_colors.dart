@@ -5,7 +5,7 @@ abstract class AppColors {
   static const Color primary = Color(0xFF2B12F9);
   
   // Tons de Apoio
-  static const Color background = Color(0xFFF8F9FF); // Um branco levemente azulado
+  static const Color background = Color(0xFFF8F9FF);
   static const Color surface = Colors.white;
   static const Color error = Color(0xFFE53935);
 
@@ -19,7 +19,7 @@ abstract class AppColors {
     end: Alignment.bottomRight,
     colors: [
       Color(0xFF2B12F9),
-      Color(0xFF6351FF), // Um tom mais claro para o degrade
+      Color(0xFF6351FF), 
     ],
   );
 }

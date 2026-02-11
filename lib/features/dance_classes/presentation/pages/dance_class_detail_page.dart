@@ -40,14 +40,12 @@ class DanceClassDetailPage extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Nome Dinâmico vindo da API
                   Text(
                     rhythm.toUpperCase(),
                     style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 16),
                   
-                  // Grid de Informações Fixas
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

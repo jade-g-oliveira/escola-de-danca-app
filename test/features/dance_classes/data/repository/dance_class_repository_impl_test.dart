@@ -26,20 +26,19 @@ void main() {
     test(
       'deve retornar uma lista de DanceClassEntity quando a chamada ao data source for bem-sucedida',
       () async {
-        // Arrange (Configura o comportamento do mock)
+        // Arrange 
         when(() => mockDataSource.getDanceClasses())
             .thenAnswer((_) async => tRawJsonList);
 
-        // Act (Executa a ação que queremos testar)
+        // Act 
         final result = await repository.getDanceClasses();
 
-        // Assert (Verifica se o resultado é o esperado)
+        // Assert 
         expect(result, isA<List<DanceClassEntity>>());
         expect(result.length, 2);
         expect(result[0].rhythm, "Salsa");
         expect(result[1].rhythm, "Tango");
         
-        // Verifica se o DataSource foi chamado exatamente uma vez
         verify(() => mockDataSource.getDanceClasses()).called(1);
         verifyNoMoreInteractions(mockDataSource);
       },

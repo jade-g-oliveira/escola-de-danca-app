@@ -4,7 +4,6 @@ import 'package:escola_de_danca_app/features/dance_classes/presentation/provider
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-// Mock do repository (interface)
 class MockDanceClassRepository extends Mock implements DanceClassRepository {}
 
 void main() {
@@ -29,12 +28,12 @@ void main() {
       // Act
       final future = provider.loadDanceClasses();
 
-      // Assert - Verifica se o loading fica true logo no início
+      // Assert
       expect(provider.loading, true);
 
       await future;
 
-      // Assert - Após o await, o loading deve ser false e a lista deve ter dados
+      // Assert
       expect(provider.loading, false);
       expect(provider.danceClasses, tDanceClasses);
       verify(() => mockRepository.getDanceClasses()).called(1);
@@ -46,12 +45,10 @@ void main() {
           .thenThrow(Exception("Erro na API"));
 
       // Act
-      // Chamamos a função dentro de um try/catch no teste para capturar a exceção
-      // e permitir que o código continue para as verificações (Asserts)
       try {
         await provider.loadDanceClasses();
       } catch (_) {
-        // Capturamos a exceção propositalmente
+        //Capturamos a exceção propositalmente
       }
 
       // Assert final

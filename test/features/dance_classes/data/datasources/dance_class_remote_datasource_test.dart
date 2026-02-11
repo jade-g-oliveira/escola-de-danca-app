@@ -35,7 +35,6 @@ void main() {
       await dataSource.getDanceClasses();
 
       // Assert
-      // Verifica se o Dio foi chamado exatamente com a rota correta
       verify(() => mockDio.get('/albums')).called(1);
     });
 
@@ -69,7 +68,6 @@ void main() {
       final call = dataSource.getDanceClasses();
 
       // Assert
-      // Verifica se o seu try/catch transformou o erro do Dio em uma Exception genérica
       expect(() => call, throwsA(isA<Exception>()));
     });
   });

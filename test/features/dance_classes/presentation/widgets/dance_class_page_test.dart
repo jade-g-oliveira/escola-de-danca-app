@@ -16,8 +16,6 @@ void main() {
     mockRepository = MockDanceClassRepository();
     provider = DanceClassProvider(mockRepository);
   });
-
-  // Helper para criar o widget com os providers necessários
   Widget createWidgetUnderTest() {
     return MaterialApp(
       home: ChangeNotifierProvider<DanceClassProvider>.value(
@@ -28,22 +26,19 @@ void main() {
   }
 
   testWidgets('deve exibir EmptyStateWidget quando a lista de aulas estiver vazia', (tester) async {
-    // Arrange: Mock do repositório retornando lista vazia
+    // Arrange
     when(() => mockRepository.getDanceClasses()).thenAnswer((_) async => []);
 
-    // Act: Constrói o widget
+    // Act
     await tester.pumpWidget(createWidgetUnderTest());
     
-    // Dispara o carregamento
-    provider.loadDanceClasses();
+    provider.loadDanceClasses();    
     
-    // 1. pump() processa o início do loading (mostra o CircularProgressIndicator)
-    await tester.pump(); 
+    await tester.pump();     
     
-    // 2. pumpAndSettle() aguarda todas as animações e microtasks (conclusão do fetch)
     await tester.pumpAndSettle();
 
-    // Assert: Agora o widget deve estar na árvore
+    // Assert
     expect(find.text("Nenhum ritmo encontrado"), findsOneWidget);
     expect(find.byIcon(Icons.music_note_outlined), findsOneWidget);
   });
