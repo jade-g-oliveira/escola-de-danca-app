@@ -3,7 +3,6 @@ import 'package:escola_de_danca_app/features/dance_classes/data/datasource/dance
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-//Mock do Dio para não fazer chamadas reais à internet
 class MockDio extends Mock implements Dio {}
 
 void main() {

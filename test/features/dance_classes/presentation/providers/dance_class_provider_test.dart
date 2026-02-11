@@ -48,7 +48,6 @@ void main() {
       try {
         await provider.loadDanceClasses();
       } catch (_) {
-        //Capturamos a exceção propositalmente
       }
 
       // Assert final
