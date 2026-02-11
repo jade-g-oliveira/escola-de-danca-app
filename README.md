@@ -61,6 +61,7 @@ lib/
  └── main.dart      # Ponto de entrada e Injeção de Dependências
 
 ⚙️ Como rodar o projeto
+
 Certifique-se de ter o Flutter instalado na versão estável.
 
 Clone o repositório.
