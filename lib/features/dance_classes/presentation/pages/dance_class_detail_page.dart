@@ -11,6 +11,7 @@ class DanceClassDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Stack(
             children: [
@@ -36,6 +37,7 @@ class DanceClassDetailPage extends StatelessWidget {
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(24),
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Nome Dinâmico vindo da API
@@ -71,6 +73,7 @@ class DanceClassDetailPage extends StatelessWidget {
                   Row(
                     children: [
                       const Column(
+                        mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("Mensalidade", style: TextStyle(fontSize: 12)),
@@ -97,6 +100,7 @@ class DanceClassDetailPage extends StatelessWidget {
 
   Widget _buildInfoChip(IconData icon, String label) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Container(
           padding: const EdgeInsets.all(12),

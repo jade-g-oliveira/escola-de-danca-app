@@ -13,6 +13,7 @@ class EmptyStateWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 40),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Icon(Icons.music_note_outlined, size: 80, color: Colors.grey[300]), // Ícone que combine com dança
             const SizedBox(height: 16),
