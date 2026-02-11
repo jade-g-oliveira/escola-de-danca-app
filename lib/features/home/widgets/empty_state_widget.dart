@@ -15,7 +15,7 @@ class EmptyStateWidget extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.music_note_outlined, size: 80, color: Colors.grey[300]), // Ícone que combine com dança
+            Icon(Icons.music_note_outlined, size: 80, color: Colors.grey[300]), 
             const SizedBox(height: 16),
             const Text(
               "Nenhum ritmo encontrado",

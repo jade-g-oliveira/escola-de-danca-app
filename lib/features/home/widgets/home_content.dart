@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../../core/routes/app_routes.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../dance_classes/domain/entities/dance_class_entity.dart';
 import '../../dance_classes/presentation/providers/dance_class_provider.dart';
 import '../../dance_classes/presentation/widgets/dance_class_card.dart';
 import '../../dance_classes/presentation/widgets/header_section.dart';
@@ -31,31 +32,67 @@ class HomeContent extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               Expanded(
-                child: Consumer<DanceClassProvider>(
-                  builder: (context, provider, _) {
-                    if (provider.loading) {
-                      return const Center(child: CircularProgressIndicator(color: AppColors.primary));
-                    }
-                    if (provider.danceClasses.isEmpty) {
-                      return EmptyStateWidget(
-                        onRetry: () => provider.loadDanceClasses(),
+                child: 
+                Selector<DanceClassProvider, ({bool loading, List<DanceClassEntity> classes})>(
+                  selector: (context, provider) => (
+                    loading: provider.loading, 
+                    classes: provider.danceClasses
+                  ),
+                  builder: (context, data, _) {
+                    if (data.loading) {
+                      return const Center(
+                        child: CircularProgressIndicator(color: AppColors.primary),
                       );
                     }
-
-                    final danceClasses = provider.danceClasses.take(5).toList();
+                    
+                    if (data.classes.isEmpty) {
+                      return EmptyStateWidget(
+                        onRetry: () => context.read<DanceClassProvider>().loadDanceClasses(),
+                      );
+                    }
+                    final displayClasses = data.classes.take(5).toList();
 
                     return ListView.builder(
-                      itemCount: danceClasses.length,
+                      shrinkWrap: true,
+                      itemCount: displayClasses.length,
                       itemBuilder: (context, index) {
-                        final danceClass = danceClasses[index];
+                        final danceClass = displayClasses[index];
                         return DanceClassCard(
-                          ritmo: danceClasses[index].rhythm,
-                          onTap: () => context.push(AppRoutes.danceClassDetaill, extra: danceClass.rhythm),
+                          rhythm: danceClass.rhythm,
+                          onTap: () => context.push(
+                            AppRoutes.danceClassDetaill, 
+                            extra: danceClass.rhythm,
+                          ),
                         );
                       },
                     );
                   },
-                ),
+                ),                
+                // Consumer<DanceClassProvider>(
+                //   builder: (context, provider, _) {
+                //     if (provider.loading) {
+                //       return const Center(child: CircularProgressIndicator(color: AppColors.primary));
+                //     }
+                //     if (provider.danceClasses.isEmpty) {
+                //       return EmptyStateWidget(
+                //         onRetry: () => provider.loadDanceClasses(),
+                //       );
+                //     }
+
+                //     final danceClasses = provider.danceClasses.take(5).toList();
+
+                //     return ListView.builder(
+                //       itemCount: danceClasses.length,
+                //       itemBuilder: (context, index) {
+                //         final danceClass = danceClasses[index];
+                //         return DanceClassCard(
+                //           rhythm: danceClasses[index].rhythm,
+                //           onTap: () => context.push(AppRoutes.danceClassDetaill, extra: danceClass.rhythm),
+                //         );
+                //       },
+                //     );
+                //   },
+                // ),
               ),
             ],
           ),

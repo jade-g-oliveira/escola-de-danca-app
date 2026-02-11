@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomePage> {
     super.initState();
 
     _screens = [
-      const HomeContent(), // Extraia o conteúdo atual da sua Home para um widget
+      const HomeContent(),
       const DanceClassesPage(),
       const Center(child: Text("Agenda em breve")),
       const Center(child: Text("Perfil em breve")),

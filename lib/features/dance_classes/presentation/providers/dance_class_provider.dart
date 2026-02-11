@@ -18,6 +18,7 @@ class DanceClassProvider extends ChangeNotifier {
   DanceClassProvider(this.repository);
 
   Future<void> loadDanceClasses() async {
+    if (_danceClasses.isNotEmpty || _loading) return;
     _loading = true;
     _errorMessage = null;
 

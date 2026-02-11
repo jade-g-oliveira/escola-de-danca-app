@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/app_colors.dart';
 
 class DanceClassCard extends StatelessWidget {
-  final String ritmo;
+  final String rhythm;
   final VoidCallback onTap;
 
   const DanceClassCard({
-    required this.ritmo,
+    required this.rhythm,
     required this.onTap,
-    super.key
+    super.key,
   });
 
   @override
@@ -38,7 +38,7 @@ class DanceClassCard extends StatelessWidget {
           child: const Icon(Icons.music_note, color: AppColors.primary),
         ),
         title: Text(
-          ritmo.toUpperCase(),
+          rhythm.toUpperCase(),
           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
         ),
         subtitle: const Text("Escola de Dança • 60 min"),

@@ -44,7 +44,7 @@ class DanceClassesPage extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final danceClass = allClasses[index];
                     return DanceClassCard(
-                      ritmo: allClasses[index].rhythm,
+                      rhythm: allClasses[index].rhythm,
                       onTap: () => context.push(AppRoutes.danceClassDetaill, extra: danceClass.rhythm),
                     );
                   },

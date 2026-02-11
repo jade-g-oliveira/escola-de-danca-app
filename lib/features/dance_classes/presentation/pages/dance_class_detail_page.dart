@@ -22,7 +22,7 @@ class DanceClassDetailPage extends StatelessWidget {
                   color: AppColors.primary,
                   borderRadius: BorderRadius.vertical(bottom: Radius.circular(32)),
                 ),
-                child: const Icon(Icons.auto_awesome, size: 80, color: Colors.white24),
+                child: const Icon(Icons.music_note, size: 80, color: Colors.white24),
               ),
               SafeArea(
                 child: IconButton(
