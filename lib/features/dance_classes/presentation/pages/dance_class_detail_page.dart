@@ -26,7 +26,7 @@ class DanceClassDetailPage extends StatelessWidget {
               ),
               SafeArea(
                 child: IconButton(
-                  icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white),
+                  icon: const Icon(Icons.arrow_back_ios_new, color: AppColors.surface),
                   onPressed: () => context.pop(),
                 ),
               ),
